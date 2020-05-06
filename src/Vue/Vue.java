@@ -1,7 +1,7 @@
 package Vue;
 
-import Modele.Modele;
-import control.Controleur;
+import Modele.*;
+import Control.Controleur;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class Vue {
         grille = new Grille(modele);
         frame.add(grille);
 
-        commandes = new Commandes();
+        commandes = new Commandes(modele);
         frame.add(commandes);
 
         frame.pack();
@@ -32,7 +32,7 @@ public class Vue {
 }
 
 class Grille extends JPanel {
-    private Modele modele;
+    private final Modele modele;
     private final static int TAILLE = 12;
 
     Grille(Modele m) {
@@ -54,14 +54,18 @@ class Grille extends JPanel {
     }
 
     private void paint(Graphics g, Zone c, int x, int y) {
-        if (c.getstatus() = 0) {
+        if (c.getstatus() == 0) {
             g.setColor(Color.GRAY);
-        } else if (c.getstatus() = 1) {
+        } else if (c.getstatus() == 1) {
             g.setColor(Color.CYAN);
         } else {
             g.setColor(Color.BLUE);
         }
         g.fillRect(x, y, TAILLE, TAILLE);
+        if (c.getjoueur() == 1) {
+            g.setColor(Color.YELLOW);
+            g.fillRect(x, y, TAILLE-4, TAILLE-4);
+        }
     }
 }
 
@@ -69,6 +73,7 @@ class Commandes extends JPanel {
     private Modele modele;
 
     JButton next_tour = new JButton(">");
+
 
     Commandes(Modele m) {
         modele = m;

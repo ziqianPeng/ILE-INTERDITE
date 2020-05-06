@@ -1,4 +1,4 @@
-package control;
+package Control;
 
 import javax.swing.JLabel;
 import javax.swing.JComponent;

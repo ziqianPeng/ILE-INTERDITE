@@ -1,4 +1,4 @@
-package control;
+package Control;
 
 import Modele.Modele;
 import control.ZoneCliquable;

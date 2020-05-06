@@ -1,4 +1,4 @@
-package control;
+package Control;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
