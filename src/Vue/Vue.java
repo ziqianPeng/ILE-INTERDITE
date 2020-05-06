@@ -73,14 +73,28 @@ class Commandes extends JPanel {
     private Modele modele;
 
     JButton next_tour = new JButton(">");
-
+    JButton clean = new JButton("CLEAN");
+    JButton up = new JButton("UP");
+    JButton down = new JButton("DOWN");
+    JButton left = new JButton("LEFT");
+    JButton right = new JButton("RIGHT");
 
     Commandes(Modele m) {
         modele = m;
         this.add(next_tour);
+        this.add(clean);
+        this.add(up);
+        this.add(down);
+        this.add(left);
+        this.add(right);
 
-        Controleur ctrl = new Controleur(modele); // ctrl could be any key
-        next_tour.addMouseListener(ctrl);
+        Controleur mouse = new Controleur(modele); //检测鼠标
+        Controleur N = new Controleur(modele);
+        Controleur M = new Controleur(modele);
+        Controleur UP = new Controleur(modele);
+        next_tour.addMouseListener(mouse);
+        next_tour.addKeyListener(N);
+
     }
 }
 

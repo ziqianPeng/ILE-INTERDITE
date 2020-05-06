@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 import java.awt.Dimension;
 import java.awt.Color;
 
+// Phinease： 我需要一个KeyListener 给joueur移动（上下左右）用和N,M键，且区分鼠标和键盘的检测
 
 public class Controleur implements MouseListener {
     private Modele modele;
