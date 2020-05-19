@@ -1,14 +1,14 @@
 package Modele;
 
+import Vue.Vue;
+
+import java.awt.*;
+
 public class Test {
     public static void main(String[] args) {
-        Modele modele=new Modele();
-        for(Celules[] cl:modele.cellules){
-            for(Celules c:cl){
-                System.out.print(c);
-            }
-            System.out.println();
-        }
+        EventQueue.invokeLater(() -> {
+            Modele modele = new Modele();
+            Vue vue = new Vue(modele);
+        });
     }
-
 }

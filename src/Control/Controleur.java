@@ -1,13 +1,11 @@
 package Control;
 
 import Modele.Modele;
-import control.ZoneCliquable;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.SwingUtilities;
-import java.awt.Dimension;
-import java.awt.Color;
 
 // Phinease： 我需要一个KeyListener 给joueur移动（上下左右）用和N,M键，且区分鼠标和键盘的检测
 
@@ -17,6 +15,21 @@ public class Controleur implements MouseListener {
         this.modele = modele;
     }
 
+    public void actionPerformed(ActionEvent e) {
+        modele.avance();
+    }
+
+    public void mouseClicked(MouseEvent e) {
+        if (SwingUtilities.isRightMouseButton(e)) {
+            modele.avance();
+        }
+    }
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        if (SwingUtilities.isRightMouseButton(e)) {
+//            this.clicGauche();
+//        }
+//    }
 
     public void clicGauche(ZoneCliquable z) {
         if(z instanceof FindeTour){
@@ -24,12 +37,7 @@ public class Controleur implements MouseListener {
         }
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if (SwingUtilities.isRightMouseButton(e)) {
-            this.clicGauche();
-        }
-    }
+
 
     @Override
     public void mousePressed(MouseEvent e) {}
@@ -45,11 +53,12 @@ class FindeTour extends ZoneCliquable {
         super("Fin de Tour",x,y);
         this.modele = m;
     }
-
-    @Override
     public void clicGauche() {
-        this.modele.inondationAlea(3);
     }
+//    @Override
+//    public void clicGauche() {
+//        this.modele.inondationAlea(3);
+//    }
 
     @Override
     public void clicDroit() {}
