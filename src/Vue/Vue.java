@@ -95,6 +95,7 @@ class Commandes extends JPanel {
         next_tour.addMouseListener(mouse);
         next_tour.addKeyListener(N);
 
+
     }
 }
 
