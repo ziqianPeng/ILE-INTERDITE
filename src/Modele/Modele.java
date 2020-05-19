@@ -1,3 +1,5 @@
+package Modele;
+
 public class Modele {
     public static final int HAUTEUR = 40, LARGEUR = 60;
     protected Celules[][] cellules;
@@ -16,11 +18,11 @@ public class Modele {
         for (int i = 1; i <= LARGEUR; i++) {
             for (int j = 1; j <= HAUTEUR; j++) {
                 if (Math.random() < .3) {
-                    cellules[i][j].etat = Type.Normale;
+                    cellules[i][j].etat = Etat.Normale;
                 }else if (Math.random()<.6)
-                    cellules[i][j].etat=Type.Inondee;
+                    cellules[i][j].etat = Etat.Inondee;
                 else
-                    cellules[i][j].etat=Type.Submergee;
+                    cellules[i][j].etat = Etat.Submergee;
             }
         }
     }
