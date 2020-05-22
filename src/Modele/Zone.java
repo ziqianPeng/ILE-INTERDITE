@@ -1,14 +1,19 @@
 package Modele;
 
-public class Zone {
+import Control.ZoneCliquable;
+
+public class Zone extends ZoneCliquable {
     private Modele modele;
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     protected Etat etat;
+
+
     public Zone(Modele m, int x, int y){
+        super(x,y);
+        this.x = x;
+        this.y = y;
         this.modele=m;
-        this.x=x;
-        this.y=y;
     }
 
     public String toString() {
@@ -38,13 +43,24 @@ public class Zone {
         }
     }
 
+    public boolean nonSubmerge(){
+        return !(this.etat instanceof Etat_Submerge);
+    }
+
     public int getstatus() {
         return this.etat.get_status();
     }
 
-    public int getjoueur() {
-        // TODO
-        // 有没有玩家 返回1表示有人
-        return 0;
+    @Override
+    public void clicGauche() {}
+    @Override
+    public void clicDroit() {}
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
     }
 }

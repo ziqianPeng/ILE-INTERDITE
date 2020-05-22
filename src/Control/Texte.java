@@ -8,7 +8,6 @@ import javax.swing.JComponent;
  * Classe pour une zone de texte modifiable.
  */
 public class Texte extends JLabel {
-
     
     /**
      * Constructeur paramétré par un texte initial.

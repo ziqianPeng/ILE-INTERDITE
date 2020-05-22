@@ -1,7 +1,6 @@
 package Modele;
 
 import Vue.Vue;
-
 import java.awt.*;
 
 public class Test {
