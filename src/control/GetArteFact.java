@@ -6,7 +6,6 @@ import vue.Commandes;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
-import java.util.spi.AbstractResourceBundleProvider;
 
 public class GetArteFact extends Controleur {
     private Commandes commandes;
