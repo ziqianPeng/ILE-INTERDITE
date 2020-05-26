@@ -17,8 +17,8 @@ public class Joueur {
 
     public Joueur(Modele m,int x,int y){
         this.modele = m;
-        while(modele.zones[x][y].getstatus()!=0){
-            x=+1;
+        while(modele.zones[x][y].getstatus() != 0){
+            x =+ 1;
         }
         position = modele.getZone(x,y);
         this.cles.putIfAbsent(Artefact.air,0);
@@ -28,21 +28,13 @@ public class Joueur {
     }
 
 
-    public HashMap<Artefact,Integer> getCles(){
-        return cles;
-    }
-
     public boolean TestAction(){
         return this.nbrAction<3;
     }
-
     protected void resetNbr(){this.nbrAction = 0;}
-
     public int restNbr(){
-        System.out.println(this.nbrAction);
         return 3-this.nbrAction;
     }
-
     public void addAction(){
         nbrAction++;
     }
@@ -51,10 +43,11 @@ public class Joueur {
         return position;
     }
 
-    //part3
+    public HashMap<Artefact,Integer> getCles(){
+        return cles;
+    }
 
-    public void getcle(int randomNbr){
-        Random type = new Random();
+    public void getCle(int randomNbr){
         if(randomNbr%6 <3){
             Artefact acte = this.getPosition().getType();
             switch (acte) {
@@ -89,6 +82,8 @@ public class Joueur {
                 }
             }
     }
+
+
 
     public boolean getArteFact( Modele.Artefact artefact) {
         if (this.cles.get(artefact) == 4 && (!artefacts.contains(artefact))) {

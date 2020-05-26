@@ -59,24 +59,36 @@ public class Modele extends vue.Observable {
             int new_X = pos.getX();
             switch (e){
                 case up:
+                    if(horsJeu(zones[new_X][new_Y-1])){
+                        return;
+                    }
                     if(zones[new_X][new_Y-1].getstatus()==3) {
                         return;
                     }
                     new_Y -= 1;
                     break;
                 case down:
+                    if(horsJeu(zones[new_X][new_Y+1])){
+                        return;
+                    }
                     if(zones[new_X][new_Y+1].getstatus()==3) {
                         return;
                     }
                     new_Y += 1;
                     break;
                 case left:
+                    if(horsJeu(zones[new_X-1][new_Y])){
+                        return;
+                    }
                     if(zones[new_X-1][new_Y].getstatus()==3) {
                         return;
                     }
                     new_X -= 1;
                     break;
                 case right:
+                    if(horsJeu(zones[new_X+1][new_Y])){
+                        return;
+                    }
                     if(zones[new_X+1][new_Y].getstatus()==3) {
                         return;
                     }
@@ -95,6 +107,12 @@ public class Modele extends vue.Observable {
         notifyObservers();
     }
 
+    public boolean horsJeu(Zone e){
+        if(e.getX()<0||e.getX()>LARGEUR){
+            return true;
+        }
+        return e.getY() < 0 || e.getY() > HAUTEUR;
+    }
     public void assecher(KeyControleur.Direction e){
         Joueur courant = getJoueurCourant();
         int x=courant.getPosition().getX();
@@ -102,21 +120,33 @@ public class Modele extends vue.Observable {
         courant.addAction();
         switch (e){
             case up:
-                if(zones[x][y-1].getstatus()!=1){
+                if(horsJeu(zones[x][y-1])){
                     return;
+                }
+                if(zones[x][y-1].getstatus()!=1) {
+                        return;
                 }
                 zones[x][y-1].assecher();
             case down:
-                if(zones[x][y+1].getstatus()!=1){
+                if(horsJeu(zones[x][y+1])){
                     return;
                 }
+                if(zones[x][y+1].getstatus()!=1){
+                    return;
+                };
                 zones[x][y+1].assecher();
             case right:
+                if(horsJeu(zones[x+1][y])){
+                    return;
+                }
                 if(zones[x+1][y].getstatus()!=1){
                     return;
                 }
                 zones[x+1][y].assecher();
             case left:
+                if(horsJeu(zones[x-1][y])){
+                    return;
+                }
                 if(zones[x-1][y].getstatus()!=1){
                     return;
                 }
@@ -136,6 +166,9 @@ public class Modele extends vue.Observable {
         return this.joueurs.get(this.joueurIdx);
     }
 
+    public int getJoueurCourantIdx(){return this.joueurIdx;}
+
+
     public void findeTour(int nbr){
         while (nbr>0){
             int x = random.nextInt(LARGEUR+1);
@@ -146,7 +179,7 @@ public class Modele extends vue.Observable {
             }
         }
         int bonneChance = random.nextInt(LARGEUR*HAUTEUR-2);
-        this.getJoueurCourant().getcle(bonneChance);
+        this.getJoueurCourant().getCle(bonneChance);
         this.getJoueurCourant().resetNbr();
 
         joueurIdx += 1;

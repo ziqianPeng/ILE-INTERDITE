@@ -9,20 +9,19 @@ abstract class Cle {
 }
 
 class CleAir extends Cle{
-    private Artefact cle = Artefact.air;
     private static int nbr = 0;
 
     public boolean addCle(){
-        if(this.nbr <nbrMax){
-            this.nbr++;
-            System.out.println("cle"+this.nbr);
+        if(nbr <nbrMax){
+            nbr ++;
+            System.out.println("cle"+ nbr);
             return true;
         }
         return false;
     }
 
     public Modele.Artefact allKey() {
-        if (this.nbr == this.nbrMax) {
+        if (nbr == this.nbrMax) {
             return Modele.Artefact.air;
         }
         return Modele.Artefact.normal;
@@ -35,16 +34,16 @@ class CleEau extends Cle{
     private static int nbr = 0;
 
     public boolean addCle(){
-        if(this.nbr <nbrMax){
-            this.nbr++;
-            System.out.println("cle shui"+this.nbr);
+        if(nbr <nbrMax){
+            nbr++;
+            System.out.println("cle shui"+ nbr);
             return true;
         }
         return false;
     }
 
     public Modele.Artefact allKey() {
-        if (this.nbr == this.nbrMax) {
+        if (nbr == this.nbrMax) {
             return Modele.Artefact.eau;
         }
         return Modele.Artefact.normal;
@@ -56,15 +55,15 @@ class CleTerre extends Cle{
     private static int nbr = 0;
 
     public boolean addCle(){
-        if(this.nbr <nbrMax){
-            this.nbr++;
-            System.out.println("cle terre"+this.nbr);
+        if(nbr <nbrMax){
+            nbr++;
+            System.out.println("cle terre"+ nbr);
             return true;
         }
         return false;
     }
     public Modele.Artefact allKey() {
-        if (this.nbr == this.nbrMax) {
+        if (nbr == this.nbrMax) {
             return Modele.Artefact.terre;
         }
         return Modele.Artefact.normal;
@@ -76,16 +75,16 @@ class CleFeu extends Cle{
     private static int nbr = 0;
 
     public boolean addCle(){
-        if(this.nbr <nbrMax){
-            this.nbr++;
-            System.out.println("cle feu"+this.nbr);
+        if(nbr <nbrMax){
+            nbr++;
+            System.out.println("cle feu"+ nbr);
             return true;
         }
         return false;
     }
 
     public Modele.Artefact allKey() {
-        if (this.nbr == this.nbrMax) {
+        if (nbr == this.nbrMax) {
             return Modele.Artefact.feu;
         }
         return Modele.Artefact.normal;
