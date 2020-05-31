@@ -4,7 +4,7 @@ import vue.Vue;
 import java.awt.*;
 import java.io.IOException;
 
-public class Test {
+public class Main {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             Modele modele = new Modele();

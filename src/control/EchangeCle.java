@@ -1,5 +1,6 @@
 package control;
 
+import modele.Joueur;
 import modele.Modele;
 import vue.Commandes;
 
@@ -7,7 +8,8 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 
 public class EchangeCle extends Controleur {
-    private Commandes commandes;
+    private final Commandes commandes;
+    private Modele.Artefact cleChoson = Modele.Artefact.normal;
 
     public EchangeCle(Modele modele,Commandes commandes) {
         super(modele);
@@ -16,30 +18,59 @@ public class EchangeCle extends Controleur {
 
     public void mouseClicked(MouseEvent e) {
         JButton b = (JButton)e.getSource();
-       // System.out.println("echange");
         if(commandes.getEchange()){
-           // System.out.println("echange");
-            commandes.addCleEchange();
+            commandes.addClesEchange();
             modele.notifyObservers();
         }else {
+            boolean isMessenger = (this.modele.getJoueurCourant().getRole() == Joueur.Role.Messageur);
             switch (b.getText()) {
-                case "air":
-                    this.modele.cleEchange(Modele.Artefact.air);
+                case "AIR":
+                    if (isMessenger) {
+                        this.cleChoson = Modele.Artefact.air;
+                    } else {
+                        this.modele.cleEchange(Modele.Artefact.air);
+                    }
                     break;
-                case "eau":
-                    this.modele.cleEchange(Modele.Artefact.eau);
+                case "EAU":
+                    if (isMessenger) {
+                        this.cleChoson = Modele.Artefact.eau;
+                    } else {
+                        this.modele.cleEchange(Modele.Artefact.eau);
+                    }
                     break;
-                case "terre":
-                    this.modele.cleEchange(Modele.Artefact.terre);
-                case "feu":
-                    this.modele.cleEchange(Modele.Artefact.feu);
+                case "TERRE":
+                    if (isMessenger) {
+                        this.cleChoson = Modele.Artefact.terre;
+                    } else {
+                        this.modele.cleEchange(Modele.Artefact.terre);
+                    }
+                    break;
+                case "FEU":
+                    if (isMessenger) {
+                        this.cleChoson = Modele.Artefact.feu;
+                    }else {
+                        this.modele.cleEchange(Modele.Artefact.feu);
+                    }
+                    break;
+                case "GIVE JOUEUR 1":
+                    this.modele.cleEchangeMessageur(0,this.cleChoson);
+                    break;
+                case "GIVE JOUEUR 2":
+                    this.modele.cleEchangeMessageur(1,this.cleChoson);
+                    break;
+                case "GIVE JOUEUR 3":
+                    this.modele.cleEchangeMessageur(2,this.cleChoson);
+                    break;
+                case "GIVE JOUEUR 4":
+                    this.modele.cleEchangeMessageur(3,this.cleChoson);
                     break;
                 default:
                     break;
             }
-            commandes.resetEchange();
+            commandes.addClesEchange();//resetEchange();
             modele.notifyObservers();
         }
+        this.commandes.myJFrame().requestFocus();
     }
 
 

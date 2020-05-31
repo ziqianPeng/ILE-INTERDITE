@@ -15,21 +15,29 @@ public class GetArteFact extends Controleur {
             this.commandes = commandes;
         }
 
+//30/05
         public void mouseClicked(MouseEvent e) {
             JButton b = (JButton)e.getSource();
-            if("getAIR".equals(b.getText())){
-                boolean get = this.modele.getJoueurCourant().getArteFact(Artefact.air);
-                if(get){this.commandes.remove(b);}
-            }else if("getEAU".equals(b.getText())) {
-                boolean get = this.modele.getJoueurCourant().getArteFact(Artefact.eau);
-                if(get){this.commandes.remove(b);}
-            }else if("getTERRE".equals(b.getText())) {
-                boolean get = this.modele.getJoueurCourant().getArteFact(Artefact.terre);
-                if(get){this.commandes.remove(b);}
-            }else{
-                boolean get = this.modele.getJoueurCourant().getArteFact(Artefact.feu);
-                if(get){this.commandes.remove(b);}
-            }
+            boolean get = false;
+            switch (b.getText()) {
+                case "GET AIR":
+                    get = this.modele.getJoueurCourant().getArteFact(Artefact.air);
+                    break;
+                case "GET EAU":
+                    get = this.modele.getJoueurCourant().getArteFact(Artefact.eau);
+                    break;
+                case "GET TERRE":
+                    get = this.modele.getJoueurCourant().getArteFact(Artefact.terre);
+                    break;
+                case "GET FEU":
+                    get = this.modele.getJoueurCourant().getArteFact(Artefact.feu);
+                    break;
+                default:
+                    break;
+                }
+            if (get) { this.commandes.remove(b); }
+            modele.notifyObservers();
+            this.commandes.myJFrame().requestFocus();
         }
 
 }

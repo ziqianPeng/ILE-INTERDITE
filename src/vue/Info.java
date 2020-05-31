@@ -34,8 +34,8 @@ public class Info extends JPanel implements Observer{
         data [5][0] = "TERRE";
         data [6][0] = "CLE AIR";
         data [7][0] = "CLE EAU";
-        data [8][0] = "CLE FEU";
-        data [9][0] = "CLE TERRE";
+        data [8][0] = "CLE TERRE";
+        data [9][0] = "CLE FEU";
 
         for (int i = 1; i < nbJoueur+1; i++) {
             int j = i-1;
@@ -50,7 +50,7 @@ public class Info extends JPanel implements Observer{
                 data[k][i] = cles.get(Modele.Artefact.values()[k-6]);
             }
         }
-        data[1][this.modele.getJoueurCourantIdx()] = this.modele.getJoueurCourant().restNbr();
+        data[1][this.modele.getJoueurCourantIdx()+1] = this.modele.getJoueurCourant().restNbr();
 
         table = new JTable(data,names);
         table.setFont(new Font("Verdana", Font.BOLD, 12));

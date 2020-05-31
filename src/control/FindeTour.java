@@ -18,6 +18,7 @@ public class FindeTour extends Controleur  {
         this.modele.findeTour(3);
         commandes.addArtefacts();
         commandes.reset();
+        this.commandes.myJFrame().requestFocus();
     }
 
     @Override

@@ -14,7 +14,6 @@ class CleAir extends Cle{
     public boolean addCle(){
         if(nbr <nbrMax){
             nbr ++;
-            System.out.println("cle"+ nbr);
             return true;
         }
         return false;
@@ -30,13 +29,11 @@ class CleAir extends Cle{
 }
 
 class CleEau extends Cle{
-    private Artefact cle = Artefact.eau;
     private static int nbr = 0;
 
     public boolean addCle(){
         if(nbr <nbrMax){
             nbr++;
-            System.out.println("cle shui"+ nbr);
             return true;
         }
         return false;
@@ -51,13 +48,11 @@ class CleEau extends Cle{
 }
 
 class CleTerre extends Cle{
-    private Artefact cle = Artefact.terre;
     private static int nbr = 0;
 
     public boolean addCle(){
         if(nbr <nbrMax){
             nbr++;
-            System.out.println("cle terre"+ nbr);
             return true;
         }
         return false;
@@ -71,13 +66,11 @@ class CleTerre extends Cle{
 }
 
 class CleFeu extends Cle{
-    private Artefact cle = Artefact.feu;
     private static int nbr = 0;
 
     public boolean addCle(){
         if(nbr <nbrMax){
             nbr++;
-            System.out.println("cle feu"+ nbr);
             return true;
         }
         return false;
